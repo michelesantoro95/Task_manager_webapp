@@ -1,0 +1,29 @@
+ {% block content %}
+<form action = "/add_task_html" method = "post"> 
+    <div class="mb-3">
+        <label>id</label>
+        <input type = "text" name = "id" placeholder = "id" class="form-control" />
+    </div> 
+    <div class="mb-3">
+        <label>author</label>
+        <input type = "text" name = "author" placeholder = "author" class="form-control" />
+    </div> 
+    <div class="mb-3">
+        <label>deadline</label>
+        <input type = "text" name = "deadline" placeholder = "deadline" class="form-control" />
+    </div> 
+    <div class="mb-3">
+        <label>title</label>
+        <input type = "text" name = "title" placeholder = "title" class="form-control" />
+    </div> 
+    <div class="mb-3">
+        <label>description</label>
+        <input type = "text" name = "description" placeholder = "description" class="form-control" />
+    </div> 
+
+
+
+    <input type = "submit" value = "Submit" class="btn btn-primary mb-3"/>  
+ </form> 
+  
+{% endblock content %}
