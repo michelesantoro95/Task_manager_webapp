@@ -3,15 +3,12 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
 from starlette.responses import RedirectResponse
 from starlette.templating import Jinja2Templates
-from sqlalchemy.orm import Session
 
-from database import SessionLocal,engine,connect_to_database
+from database import connect_to_database,write_task_db,get_tasks_from_db
 from task import Task
-import task
-task.Base.metadata.create_all(bind=engine)
+
 templates = Jinja2Templates(directory="templates")
 app=FastAPI()
-# tasks=[]
 
 def get_new_id():
     cursor,_=connect_to_database()
@@ -24,18 +21,7 @@ def get_new_id():
         lowest_integer += 1       
     return(lowest_integer)
 
-def write_task_db(task):
-        cursor,conn=connect_to_database()
-        values=(task.id,task.author,task.deadline,task.title,task.description)
-        sql = "INSERT INTO  web_app.tasks (id, author, deadline, title,description) VALUES (%s, %s, %s, %s, %s)"        
-        cursor.execute(sql, values)
-        conn.commit()
 
-def get_tasks_from_db():
-    cursor,_=connect_to_database()
-    cursor.execute("select * from web_app.tasks")  
-    tasks = [Task(id=str(t[0]), author=t[1], deadline=t[2], title=t[3], description=t[4]) for t in cursor.fetchall()  ]
-    return tasks
      
 
 @app.get("/")
