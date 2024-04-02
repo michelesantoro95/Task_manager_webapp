@@ -37,11 +37,15 @@ def write_task_db(task):
         sql = "INSERT INTO  web_app.tasks (id, author, deadline, title,description) VALUES (%s, %s, %s, %s, %s)"        
         cursor.execute(sql, values)
         conn.commit()
+        cursor.close()
+        conn.close()        
 
 def get_tasks_from_db():
-    cursor,_=connect_to_database()
+    cursor,conn=connect_to_database()
     cursor.execute("select * from web_app.tasks")  
     tasks = [Task(id=str(t[0]), author=t[1], deadline=t[2], title=t[3], description=t[4]) for t in cursor.fetchall()  ]
+    cursor.close()
+    conn.close()    
     return tasks
 
 
