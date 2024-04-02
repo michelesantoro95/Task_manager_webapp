@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from sqlalchemy import Boolean, Column, Integer, String
 
 class Task(BaseModel):
     id: str
@@ -9,13 +8,6 @@ class Task(BaseModel):
     description: str
 
 
-# class Task(Base):
-#     __tablename__ = "tasks"
 
-#     id = Column(Integer, primary_key=True, index=True)
-#     author = Column(String)
-#     deadline = Column(String)
-#     title = Column(String)     
-#     description = Column(String)     
     
 

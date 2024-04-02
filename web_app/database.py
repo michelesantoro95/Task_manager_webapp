@@ -1,21 +1,5 @@
-# from sqlalchemy import create_engine
-# from sqlalchemy.ext.declarative import declarative_base
 import psycopg2
 from task import Task
-# DB_NAME = "master"
-# DB_USER = "postgres"
-# DB_PASS = "1234"
-# DB_HOST = "localhost"
-# DB_PORT = "5432"
-
-# db_url = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}"
-# engine = create_engine(
-#     db_url, connect_args={}
-# )
-
-
-
-
 
 
 def connect_to_database():
